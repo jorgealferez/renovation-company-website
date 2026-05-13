@@ -5,33 +5,29 @@ import Stats from '@/components/sections/Stats'
 import Testimonials from '@/components/sections/Testimonials'
 import CTA from '@/components/sections/CTA'
 import ContactForm from '@/components/ui/ContactForm'
+import { COMPANY_NAME, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_ADDRESS, SITE_URL } from '@/lib/company'
 
 export const metadata: Metadata = {
-  title: 'ReformaPro – Empresa de Reformas Integrales en España',
+  title: `${COMPANY_NAME} – Empresa de Reformas Integrales en España`,
   description:
     'Reformas integrales, cocinas, baños, piscinas y jardinería. Más de 15 años de experiencia. Presupuesto gratuito sin compromiso en menos de 24h.',
 }
 
-// JSON-LD structured data
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'HomeAndConstructionBusiness',
-  name: 'ReformaPro',
-  image: 'https://reformapro.es/og-image.jpg',
-  url: 'https://reformapro.es',
-  telephone: '+34900000000',
+  name: COMPANY_NAME,
+  image: `${SITE_URL}/og-image.jpg`,
+  url: SITE_URL,
+  telephone: COMPANY_PHONE,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Calle Mayor 1',
+    streetAddress: COMPANY_ADDRESS,
     addressLocality: 'Madrid',
     postalCode: '28013',
     addressCountry: 'ES',
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 40.4168,
-    longitude: -3.7038,
-  },
+  email: COMPANY_EMAIL,
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',

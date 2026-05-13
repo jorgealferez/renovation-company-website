@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { ServiceData } from '@/types'
+import { COMPANY_NAME } from '@/lib/company'
 
 interface Props {
   service: ServiceData
@@ -12,7 +13,7 @@ export default function ServiceCard({ service }: Props) {
       <div className="relative h-48 overflow-hidden">
         <Image
           src={service.image}
-          alt={`${service.title} - ReformaPro`}
+          alt={`${service.title} - ${COMPANY_NAME}`}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

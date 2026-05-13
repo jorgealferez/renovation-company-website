@@ -1,24 +1,20 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/ui/ContactForm'
+import { COMPANY_NAME, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_ADDRESS, SITE_URL } from '@/lib/company'
 
 export const metadata: Metadata = {
-  title: 'Contacto – ReformaPro',
-  description:
-    'Contacta con ReformaPro para solicitar un presupuesto gratuito sin compromiso. Respondemos en menos de 24 horas.',
+  title: `Contacto – ${COMPANY_NAME}`,
+  description: `Contacta con ${COMPANY_NAME} para solicitar un presupuesto gratuito sin compromiso. Respondemos en menos de 24 horas.`,
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
-  name: 'Contacto ReformaPro',
-  url: 'https://reformapro.es/contacto',
+  name: `Contacto ${COMPANY_NAME}`,
+  url: `${SITE_URL}/contacto`,
 }
 
 export default function ContactoPage() {
-  const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE || '+34 900 000 000'
-  const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'info@reformapro.es'
-  const address = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || 'Calle Mayor 1, Madrid'
-
   return (
     <>
       <script
@@ -60,8 +56,8 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Teléfono</h3>
-                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="text-accent hover:underline">
-                      {phone}
+                    <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="text-accent hover:underline">
+                      {COMPANY_PHONE}
                     </a>
                     <p className="text-sm text-gray-500 mt-1">Lun–Vie 8:00–19:00, Sáb 9:00–14:00</p>
                   </div>
@@ -75,8 +71,8 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Email</h3>
-                    <a href={`mailto:${email}`} className="text-accent hover:underline">
-                      {email}
+                    <a href={`mailto:${COMPANY_EMAIL}`} className="text-accent hover:underline">
+                      {COMPANY_EMAIL}
                     </a>
                   </div>
                 </article>
@@ -90,7 +86,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Dirección</h3>
-                    <address className="not-italic text-gray-600">{address}</address>
+                    <address className="not-italic text-gray-600">{COMPANY_ADDRESS}</address>
                   </div>
                 </article>
               </div>

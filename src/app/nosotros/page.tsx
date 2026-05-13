@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import ContactForm from '@/components/ui/ContactForm'
+import { COMPANY_NAME } from '@/lib/company'
 
 export const metadata: Metadata = {
-  title: 'Sobre Nosotros – ReformaPro',
-  description:
-    'Conoce a ReformaPro: más de 15 años reformando hogares con profesionalidad, honestidad y calidad. Conoce nuestro equipo y filosofía de trabajo.',
+  title: `Sobre Nosotros – ${COMPANY_NAME}`,
+  description: `Conoce a ${COMPANY_NAME}: más de 15 años reformando hogares con profesionalidad, honestidad y calidad. Conoce nuestro equipo y filosofía de trabajo.`,
 }
 
 const VALUES = [
@@ -35,7 +35,7 @@ export default function NosotrosPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-24 bg-primary" aria-label="Sobre ReformaPro">
+      <section className="relative py-24 bg-primary" aria-label={`Sobre ${COMPANY_NAME}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -58,7 +58,7 @@ export default function NosotrosPage() {
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  ReformaPro nació en 2009 de la mano de dos maestros de obra con la visión de crear una empresa de reformas diferente: una donde el cliente sea siempre lo primero y la calidad no sea negociable.
+                  {COMPANY_NAME} nació en 2009 de la mano de dos maestros de obra con la visión de crear una empresa de reformas diferente: una donde el cliente sea siempre lo primero y la calidad no sea negociable.
                 </p>
                 <p>
                   Empezamos con un pequeño equipo de 5 personas y hoy somos más de 40 profesionales especializados en distintos gremios: albañilería, fontanería, electricidad, carpintería y diseño de interiores.
@@ -71,7 +71,7 @@ export default function NosotrosPage() {
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
-                alt="Equipo de ReformaPro trabajando en una reforma"
+                alt={`Equipo de ${COMPANY_NAME} trabajando en una reforma`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
