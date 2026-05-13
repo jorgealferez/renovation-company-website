@@ -1,0 +1,41 @@
+{
+  "name": "renovation-company-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "worker": "ts-node --project tsconfig.worker.json src/worker/consumer.ts",
+    "postbuild": "next-sitemap",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "@prisma/client": "^5.15.0",
+    "next-auth": "^4.24.7",
+    "amqplib": "^0.10.4",
+    "next-sitemap": "^4.2.3",
+    "framer-motion": "^11.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/amqplib": "^0.10.5",
+    "prisma": "^5.15.0",
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "ts-node": "^10.9.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5"
+  }
+}

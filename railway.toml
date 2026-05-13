@@ -1,0 +1,25 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm ci && npx prisma generate && npm run build"
+
+[deploy]
+startCommand = "npm run start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[services]]
+name = "web"
+[services.build]
+buildCommand = "npm ci && npx prisma generate && npm run build"
+[services.deploy]
+startCommand = "npm run start"
+healthcheckPath = "/api/health"
+
+[[services]]
+name = "worker"
+[services.build]
+buildCommand = "npm ci && npx prisma generate"
+[services.deploy]
+startCommand = "npm run worker"
