@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   typecheck:
-    name: Type Check
+    name: Type Check & Audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,6 +20,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
+      - run: npm audit --audit-level=high
       - run: npx tsc --noEmit
 
   deploy-web:
