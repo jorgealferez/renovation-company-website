@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm ci && npx prisma generate && npm run build"
+buildCommand = "npm ci --cache /tmp/.npm && npx prisma generate && npm run build"
 
 [deploy]
 startCommand = "npm run start"
@@ -12,7 +12,7 @@ restartPolicyMaxRetries = 3
 [[services]]
 name = "web"
 [services.build]
-buildCommand = "npm ci && npx prisma generate && npm run build"
+buildCommand = "npm ci --cache /tmp/.npm && npx prisma generate && npm run build"
 [services.deploy]
 startCommand = "npm run start"
 healthcheckPath = "/api/health"
@@ -20,6 +20,6 @@ healthcheckPath = "/api/health"
 [[services]]
 name = "worker"
 [services.build]
-buildCommand = "npm ci && npx prisma generate"
+buildCommand = "npm ci --cache /tmp/.npm && npx prisma generate"
 [services.deploy]
 startCommand = "npm run worker"
