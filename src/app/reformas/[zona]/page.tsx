@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ZONES, getZoneBySlug } from '@/lib/content'
 import ContactForm from '@/components/ui/ContactForm'
+import { COMPANY_NAME, SITE_URL } from '@/lib/company'
 
 interface Props {
   params: { zona: string }
@@ -18,10 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!zone) return { title: 'Zona no encontrada' }
 
   return {
-    title: `${zone.title} – ReformaPro`,
+    title: `${zone.title} – ${COMPANY_NAME}`,
     description: zone.description,
     openGraph: {
-      title: `${zone.title} – ReformaPro`,
+      title: `${zone.title} – ${COMPANY_NAME}`,
       description: zone.description,
       images: [{ url: zone.image, alt: zone.title }],
     },
@@ -39,8 +40,8 @@ export default function ZonaPage({ params }: Props) {
     description: zone.longDescription,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'ReformaPro',
-      url: 'https://reformapro.es',
+      name: COMPANY_NAME,
+      url: SITE_URL,
     },
     image: zone.image,
   }

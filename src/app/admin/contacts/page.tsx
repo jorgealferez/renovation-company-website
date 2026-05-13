@@ -4,9 +4,10 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { prisma } from '@/lib/prisma'
 import type { Metadata } from 'next'
 import AdminContactsClient from './AdminContactsClient'
+import { COMPANY_NAME } from '@/lib/company'
 
 export const metadata: Metadata = {
-  title: 'Contactos – Admin ReformaPro',
+  title: `Contactos – Admin ${COMPANY_NAME}`,
   robots: { index: false, follow: false },
 }
 

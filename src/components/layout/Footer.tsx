@@ -1,10 +1,8 @@
 import Link from 'next/link'
+import { COMPANY_NAME, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_ADDRESS } from '@/lib/company'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE || '+34 900 000 000'
-  const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL || 'info@reformapro.es'
-  const address = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || 'Calle Mayor 1, Madrid'
 
   return (
     <footer className="bg-primary text-white" role="contentinfo">
@@ -18,7 +16,7 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </div>
-              <span className="font-bold text-lg">Reforma<span className="text-accent">Pro</span></span>
+              <span className="font-bold text-lg">{COMPANY_NAME}</span>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
               Empresa de reformas integrales con más de 15 años de experiencia transformando hogares y negocios en toda España.
@@ -76,22 +74,22 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                {address}
+                {COMPANY_ADDRESS}
               </p>
               <p className="flex items-center gap-2">
                 <svg className="w-4 h-4 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-accent transition-colors">
-                  {phone}
+                <a href={`tel:${COMPANY_PHONE.replace(/\s/g, '')}`} className="hover:text-accent transition-colors">
+                  {COMPANY_PHONE}
                 </a>
               </p>
               <p className="flex items-center gap-2">
                 <svg className="w-4 h-4 flex-shrink-0 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href={`mailto:${email}`} className="hover:text-accent transition-colors">
-                  {email}
+                <a href={`mailto:${COMPANY_EMAIL}`} className="hover:text-accent transition-colors">
+                  {COMPANY_EMAIL}
                 </a>
               </p>
             </address>
@@ -99,7 +97,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-primary-600 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <p>&copy; {currentYear} ReformaPro. Todos los derechos reservados.</p>
+          <p>&copy; {currentYear} {COMPANY_NAME}. Todos los derechos reservados.</p>
           <nav aria-label="Legal">
             <ul className="flex gap-4">
               <li>

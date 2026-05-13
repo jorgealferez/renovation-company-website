@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
+import { COMPANY_NAME, COMPANY_EMAIL, COMPANY_ADDRESS } from '@/lib/company'
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidad – ReformaPro',
-  description: 'Política de privacidad y protección de datos personales de ReformaPro.',
+  title: `Política de Privacidad – ${COMPANY_NAME}`,
+  description: `Política de privacidad y protección de datos personales de ${COMPANY_NAME}.`,
   robots: { index: false, follow: false },
 }
 
@@ -16,9 +17,9 @@ export default function PrivacidadPage() {
         <section aria-labelledby="responsable">
           <h2 id="responsable" className="text-xl font-bold text-primary mt-8 mb-3">1. Responsable del tratamiento</h2>
           <p>
-            <strong>ReformaPro S.L.</strong> (en adelante &ldquo;la empresa&rdquo;) es el responsable del
-            tratamiento de sus datos personales. NIF: B-XXXXXXXX. Domicilio social: Calle Mayor 1, 28013 Madrid.
-            Email de contacto: <a href="mailto:privacidad@reformapro.es" className="text-accent">privacidad@reformapro.es</a>.
+            <strong>{COMPANY_NAME} S.L.</strong> (en adelante &ldquo;la empresa&rdquo;) es el responsable del
+            tratamiento de sus datos personales. NIF: B-XXXXXXXX. Domicilio social: {COMPANY_ADDRESS}.
+            Email de contacto: <a href={`mailto:${COMPANY_EMAIL}`} className="text-accent">{COMPANY_EMAIL}</a>.
           </p>
         </section>
 
@@ -75,7 +76,7 @@ export default function PrivacidadPage() {
           </ul>
           <p className="mt-3">
             Para ejercer estos derechos, envíe un email a{' '}
-            <a href="mailto:privacidad@reformapro.es" className="text-accent">privacidad@reformapro.es</a>.
+            <a href={`mailto:${COMPANY_EMAIL}`} className="text-accent">{COMPANY_EMAIL}</a>.
             También puede presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).
           </p>
         </section>

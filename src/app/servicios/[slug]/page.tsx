@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SERVICES, getServiceBySlug } from '@/lib/content'
 import ContactForm from '@/components/ui/ContactForm'
+import { COMPANY_NAME, SITE_URL } from '@/lib/company'
 
 interface Props {
   params: { slug: string }
@@ -18,10 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return { title: 'Servicio no encontrado' }
 
   return {
-    title: `${service.title} – ReformaPro`,
+    title: `${service.title} – ${COMPANY_NAME}`,
     description: service.description,
     openGraph: {
-      title: `${service.title} – ReformaPro`,
+      title: `${service.title} – ${COMPANY_NAME}`,
       description: service.description,
       images: [{ url: service.image, alt: service.title }],
     },
@@ -39,8 +40,8 @@ export default function ServicioPage({ params }: Props) {
     description: service.longDescription,
     provider: {
       '@type': 'LocalBusiness',
-      name: 'ReformaPro',
-      url: 'https://reformapro.es',
+      name: COMPANY_NAME,
+      url: SITE_URL,
     },
     areaServed: 'España',
     image: service.image,
