@@ -5,7 +5,7 @@ import Stats from '@/components/sections/Stats'
 import Testimonials from '@/components/sections/Testimonials'
 import CTA from '@/components/sections/CTA'
 import ContactForm from '@/components/ui/ContactForm'
-import { COMPANY_NAME, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_ADDRESS, SITE_URL } from '@/lib/company'
+import { COMPANY_NAME, COMPANY_PHONE, COMPANY_EMAIL, LEGAL_STREET, LEGAL_POSTAL_CODE, LEGAL_LOCALITY, LEGAL_REGION, SITE_URL } from '@/lib/company'
 
 export const metadata: Metadata = {
   title: `${COMPANY_NAME} – Empresa de Reformas Integrales en España`,
@@ -22,9 +22,10 @@ const jsonLd = {
   telephone: COMPANY_PHONE,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: COMPANY_ADDRESS,
-    addressLocality: 'Madrid',
-    postalCode: '28013',
+    streetAddress: LEGAL_STREET,
+    addressLocality: LEGAL_LOCALITY,
+    postalCode: LEGAL_POSTAL_CODE,
+    addressRegion: LEGAL_REGION,
     addressCountry: 'ES',
   },
   email: COMPANY_EMAIL,
