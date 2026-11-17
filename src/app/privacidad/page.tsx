@@ -85,8 +85,14 @@ export default function PrivacidadPage() {
           <h2 id="cookies" className="text-xl font-bold text-primary mt-8 mb-3">7. Cookies</h2>
           <p>
             Esta web utiliza cookies propias (técnicas, necesarias para el funcionamiento) y cookies de
-            terceros (Google Analytics, solo con su consentimiento). Puede gestionar sus preferencias
-            de cookies en cualquier momento a través del banner de cookies.
+            terceros (Google Analytics 4 de Google Ireland Ltd., cookies <code>_ga</code> y{' '}
+            <code>_ga_*</code> de hasta 2 años, con la IP anonimizada y sin publicidad), que solo se
+            cargan si pulsa «Aceptar» en el aviso. Google puede tratar datos en EE. UU. al amparo del
+            Marco de Privacidad de Datos UE-EE. UU. Puede cambiar su decisión en cualquier momento:{' '}
+            <button type="button" data-analitica-ajustes className="underline">
+              preferencias de analítica
+            </button>
+            .
           </p>
         </section>
       </div>

@@ -5,11 +5,19 @@ declare global {
   }
 }
 
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+const MEASUREMENT_ID = /^G-[A-Z0-9]{4,20}$/
 
-export function pageview(url: string): void {
-  if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return
-  window.gtag('config', GA_MEASUREMENT_ID, { page_path: url })
+/** ID de medicion valido de la variable de entorno (la escribe Simvix Brain en Railway) o null. */
+export function gaMeasurementId(
+  env: Record<string, string | undefined> = process.env
+): string | null {
+  const raw = (env.NEXT_PUBLIC_GA_MEASUREMENT_ID || env.GA_MEASUREMENT_ID || '').trim().toUpperCase()
+  return MEASUREMENT_ID.test(raw) ? raw : null
+}
+
+/** gtag solo existe si la persona acepto el aviso; sin el, los eventos no hacen nada. */
+function gtagListo(): boolean {
+  return typeof window !== 'undefined' && typeof window.gtag === 'function'
 }
 
 export function event(
@@ -21,7 +29,7 @@ export function event(
     [key: string]: unknown
   }
 ): void {
-  if (typeof window === 'undefined' || !GA_MEASUREMENT_ID) return
+  if (!gtagListo()) return
   window.gtag('event', action, params)
 }
 
@@ -42,8 +50,4 @@ export const gaEvents = {
       event_category: 'Engagement',
       event_label: sectionName,
     }),
-  cookieConsentAccepted: () =>
-    event('cookie_consent_accepted', { event_category: 'GDPR' }),
-  cookieConsentRejected: () =>
-    event('cookie_consent_rejected', { event_category: 'GDPR' }),
 }
