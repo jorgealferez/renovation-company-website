@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import CookieConsent from '@/components/ui/CookieConsent'
-import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import { gaMeasurementId } from '@/lib/analytics'
 import { COMPANY_NAME, SITE_URL } from '@/lib/company'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -59,6 +58,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  // GA4 solo tras «Aceptar» en el aviso (public/simvix-analitica.js); sin ID no se pinta nada.
+  const gaId = gaMeasurementId()
   return (
     <html lang="es">
       <head>
@@ -69,13 +70,14 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Saltar al contenido principal
         </a>
-        <GoogleAnalytics />
         <Header />
         <main id="main-content" tabIndex={-1}>
           {children}
         </main>
         <Footer />
-        <CookieConsent />
+        {gaId ? (
+          <script src="/simvix-analitica.js" data-ga-id={gaId} data-privacidad="/privacidad" defer />
+        ) : null}
       </body>
     </html>
   )
