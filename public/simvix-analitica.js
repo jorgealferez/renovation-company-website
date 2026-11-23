@@ -7,17 +7,28 @@
   var s = document.currentScript || document.querySelector("script[data-ga-id]");
   if (!s) return;
   var id = (s.getAttribute("data-ga-id") || "").trim().toUpperCase();
-  if (!/^G-[A-Z0-9]{4,20}$/.test(id)) return;
+  // un ID de ejemplo (G-XXXXXXXXXX) no mide nada: sin ID real no hay nada que consentir ni aviso
+  if (!/^G-[A-Z0-9]{4,20}$/.test(id) || /^G-X+$/.test(id)) return;
   var CLAVE = "simvix-analitica";
   var privacidad = s.getAttribute("data-privacidad") || "";
   var texto =
     s.getAttribute("data-texto") ||
     "Usamos Google Analytics para saber como se usa esta web y mejorarla. Solo se activa si lo aceptas.";
+  // la eleccion (aceptar o rechazar) se recuerda 12 meses con su fecha; despues se vuelve a
+  // preguntar (la AEPD fija 24 meses como maximo). Una eleccion sin fecha se vuelve a preguntar.
+  var VIGENCIA_MS = 365 * 24 * 60 * 60 * 1000;
   function leer() {
-    try { return window.localStorage.getItem(CLAVE); } catch (e) { return null; }
+    var raw = null;
+    try { raw = window.localStorage.getItem(CLAVE); } catch (e) { return null; }
+    var m = /^(si|no):(\d+)$/.exec(raw || "");
+    if (!m || Date.now() - Number(m[2]) > VIGENCIA_MS) return null;
+    return m[1];
   }
   function guardar(v) {
-    try { window.localStorage.setItem(CLAVE, v); } catch (e) { /* sin almacenamiento */ }
+    try {
+      if (v) window.localStorage.setItem(CLAVE, v + ":" + Date.now());
+      else window.localStorage.removeItem(CLAVE);
+    } catch (e) { /* sin almacenamiento */ }
   }
   function cargar() {
     if (window.__simvixGaCargado) return;

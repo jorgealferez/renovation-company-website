@@ -12,7 +12,8 @@ export function gaMeasurementId(
   env: Record<string, string | undefined> = process.env
 ): string | null {
   const raw = (env.NEXT_PUBLIC_GA_MEASUREMENT_ID || env.GA_MEASUREMENT_ID || '').trim().toUpperCase()
-  return MEASUREMENT_ID.test(raw) ? raw : null
+  // el de ejemplo de .env.example (G-XXXXXXXXXX) no mide nada: es como no tener ID
+  return MEASUREMENT_ID.test(raw) && !/^G-X+$/.test(raw) ? raw : null
 }
 
 /** gtag solo existe si la persona acepto el aviso; sin el, los eventos no hacen nada. */
