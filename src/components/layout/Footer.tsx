@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import { COMPANY_NAME, COMPANY_PHONE, COMPANY_EMAIL, COMPANY_ADDRESS } from '@/lib/company'
+import { gaMeasurementId } from '@/lib/analytics'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  // con analitica, retirar el consentimiento ha de ser tan facil como darlo: reabre el aviso
+  const conAnalitica = gaMeasurementId() !== null
 
   return (
     <footer className="bg-primary text-white" role="contentinfo">
@@ -110,6 +113,13 @@ export default function Footer() {
                   Aviso legal
                 </Link>
               </li>
+              {conAnalitica ? (
+                <li>
+                  <button type="button" data-analitica-ajustes className="hover:text-white transition-colors">
+                    Preferencias de cookies
+                  </button>
+                </li>
+              ) : null}
             </ul>
           </nav>
         </div>

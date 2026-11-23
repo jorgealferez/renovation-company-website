@@ -84,10 +84,13 @@ export default function PrivacidadPage() {
         <section aria-labelledby="cookies">
           <h2 id="cookies" className="text-xl font-bold text-primary mt-8 mb-3">7. Cookies</h2>
           <p>
-            Esta web utiliza cookies propias (técnicas, necesarias para el funcionamiento) y cookies de
-            terceros (Google Analytics 4 de Google Ireland Ltd., cookies <code>_ga</code> y{' '}
-            <code>_ga_*</code> de hasta 2 años, con la IP anonimizada y sin publicidad), que solo se
-            cargan si pulsa «Aceptar» en el aviso. Google puede tratar datos en EE. UU. al amparo del
+            Esta web utiliza cookies propias técnicas, necesarias para el funcionamiento (las de sesión
+            de <code>next-auth</code>, solo en el panel de administración, y la clave{' '}
+            <code>simvix-analitica</code> del almacenamiento local, que recuerda durante 12 meses si
+            aceptó o rechazó la analítica) y, solo si hay analítica configurada, cookies de terceros
+            (Google Analytics 4 de Google Ireland Ltd., cookies <code>_ga</code> y <code>_ga_*</code> de
+            hasta 2 años, con la IP anonimizada y sin publicidad), que solo se cargan si pulsa
+            «Aceptar» en el aviso. Google puede tratar datos en EE. UU. al amparo del
             Marco de Privacidad de Datos UE-EE. UU. Puede cambiar su decisión en cualquier momento:{' '}
             <button type="button" data-analitica-ajustes className="underline">
               preferencias de analítica
